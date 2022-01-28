@@ -3,9 +3,84 @@
 # It describes a set of packages to be installed, along with
 # configuration settings.
 spack:
-  # add package specs to the `specs` list
-  specs: [chai@develop, raja@develop, umpire@develop]
+  # include:
+  # - $SYS_TYPE
   view: true
   config:
     install_tree:
       padded_length: 64
+  definitions:
+  - clang_compilers:
+    - '%clang@3.9.1'
+    - '%clang@4.0.0'
+    - '%clang@6.0.0'
+    - '%clang@9.0.0'
+    - '%clang@10.0.1'
+    when: env.get("SYS_TYPE", "") == "toss_3_x86_64_ib"
+  - clang_compilers:
+    - '%clang@3.9.1'
+    - '%clang@4.0.0'
+    - '%clang@9.0.0'
+    - '%clang@11.0.0'
+    - '%clang@coral2018.08.08'
+    - '%clang@default'
+    - '%clang@ibm.10.0.1'
+    - '%clang@ibm.11.0.0'
+    when: env.get("SYS_TYPE", "") == "blueos_3_ppc64le_ib_p9"
+  - gcc_compilers:
+    - '%gcc@4.9.3'
+    - '%gcc@6.1.0'
+    - '%gcc@7.1.0'
+    - '%gcc@7.3.0'
+    - '%gcc@8.1.0'
+    when: env.get("SYS_TYPE", "") == "toss_3_x86_64_ib"
+  - gcc_compilers:
+    - '%gcc@4.9.3'
+    - '%gcc@8.3.1'
+    - '%gcc@default'
+    when: env.get("SYS_TYPE", "") == "blueos_3_ppc64le_ib_p9"
+  - intel_compilers:
+    - intel@16.0.4
+    - intel@17.0.2
+    - intel@18.0.0
+    - intel@18.0.2
+    - intel@19.0.4
+    - intel@19.1.0
+    when: env.get("SYS_TYPE", "") == "toss_3_x86_64_ib"
+  - intel_compilers: []
+    when: env.get("SYS_TYPE", "") == "blueos_3_ppc64le_ib_p9"
+  - pgi_compilers:
+    - pgi@17.10
+    - pgi@18.5
+    - pgi@19.4
+    - pgi@19.7
+    - pgi@20.1
+    when: env.get("SYS_TYPE", "") == "toss_3_x86_64_ib"
+  - pgi_compilers:
+    - pgi@19.10
+    - pgi@20.4
+    - pgi@default
+    when: env.get("SYS_TYPE", "") == "blueos_3_ppc64le_ib_p9"
+  - xl_compilers:
+    - xl@16.1.1.7
+    - xl@beta2019.0620
+    - xl@default
+    when: env.get("SYS_TYPE", "") == "blueos_3_ppc64le_ib_p9"
+  - xl_compilers: []
+    when: env.get("SYS_TYPE", "") == "toss_3_x86_64_ib"
+  - all_compilers:
+    - $clang_compilers
+    - $gcc_compilers
+    - $intel_compilers
+    - $pgi_compilers
+    - $xl_compilers
+
+  #- pkgs:
+  #  - chai@develop
+  #  - raja@develop
+  #  - umpire@develop
+
+  #specs:
+  #- matrix:
+  #  - - $pkgs
+  #  - - $all_compilers
