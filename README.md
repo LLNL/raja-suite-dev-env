@@ -65,7 +65,7 @@ Now you can create a local build cache on the file system by:
 * create the source build cache; and
 * create the binary build cache.
 
-The for creating the GPG signing key are:
+The commands for creating the GPG signing key are:
 
     $ spack gpg create $USER_ID $EMAIL
     $ mkdir $HOME/private_gpg_backup
@@ -94,8 +94,9 @@ cache.
 
     $ spack mirror add raja-dev-env $MIRROR_DIR
     $ spack buildcache keys --install --trust
+    $ spack install
     $ mkdir -p $MIRROR_DIR/build_cache
-    $ spack buildcache create --allow-root --force -d $MIRROR_DIR --all
+    $ spack buildcache create --rebuild-index --allow-root --force -d $MIRROR_DIR --all
     $ chmod -R g+rws $MIRROR_DIR/build_cache
 
 You can add/remove packages from the environment and re-create it
