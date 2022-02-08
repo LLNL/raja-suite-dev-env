@@ -75,12 +75,12 @@ spack:
     - $pgi_compilers
     - $xl_compilers
 
-  #- pkgs:
-  #  - chai@develop
-  #  - raja@develop
-  #  - umpire@develop
+  - pkgs:
+    - chai@develop
+    - raja@develop
+    - umpire@develop
 
-  #specs:
-  #- matrix:
-  #  - - $pkgs
-  #  - - $all_compilers
+  specs:
+  - matrix:
+    - - $pkgs
+    - - $all_compilers
