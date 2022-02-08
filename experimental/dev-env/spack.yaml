@@ -1,0 +1,9 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  include:
+  - $SPACK_CONFIGS_REPO/$SYS_TYPE
+
+  view: true
